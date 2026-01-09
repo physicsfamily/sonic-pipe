@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-tertiary: #1a1a25;
+    --text-primary: #e0e0e0;
+    --text-secondary: #888;
+    --accent-green: #00ff88;
+    --accent-cyan: #00d4ff;
+    --accent-purple: #a855f7;
+    --error: #ff4444;
+    --success: #00ff88;
+}
+
+body {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bg-tertiary);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.mode-selector label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--bg-tertiary);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.mode-selector label:has(input:checked) {
+    border-color: var(--accent-green);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.mode-selector input[type="radio"] {
+    accent-color: var(--accent-green);
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    flex: 1;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+.tab:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.tab.active {
+    background: var(--accent-green);
+    color: var(--bg-primary);
+    font-weight: bold;
+}
+
+.tab-content {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+.input-group, .output-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label, .output-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    background: var(--bg-tertiary);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+}
+
+textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+    color: var(--bg-primary);
+    font-weight: bold;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+}
+
+.primary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--text-secondary);
+}
+
+.secondary-btn:hover {
+    border-color: var(--accent-cyan);
+}
+
+.secondary-btn.hidden {
+    display: none;
+}
+
+.status {
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    min-height: 2.5rem;
+}
+
+.status.success {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--success);
+}
+
+.status.error {
+    background: rgba(255, 68, 68, 0.1);
+    color: var(--error);
+}
+
+.status.info {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-cyan);
+}
+
+.visualizer-container {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+#spectrogram {
+    width: 100%;
+    height: 200px;
+    background: #000;
+    border-radius: 6px;
+    border: 1px solid var(--bg-tertiary);
+}
+
+.frequency-labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.output-box {
+    min-height: 80px;
+    padding: 1rem;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    font-family: inherit;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+.output-box:empty::before {
+    content: 'Waiting for transmission...';
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.settings-panel {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.settings-panel h3 {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.setting {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.setting label {
+    flex: 0 0 180px;
+    font-size: 0.85rem;
+}
+
+.setting input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent-green);
+}
+
+.setting span {
+    flex: 0 0 60px;
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+}
+
+footer {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.transmitting {
+    animation: pulse 1s infinite;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .mode-selector {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .setting {
+        flex-wrap: wrap;
+    }
+
+    .setting label {
+        flex: 1 1 100%;
+    }
+}
